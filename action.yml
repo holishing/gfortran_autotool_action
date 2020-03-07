@@ -1,6 +1,7 @@
 # This workflow will install Fortran and GNU Autotools dependencies, and do compile test
 
 name: Fortran Program with GNU Autotools Simple Compiling Test
+description: Test build fortran programs with prepared GNU Autotools file
 
 on:
   push:
