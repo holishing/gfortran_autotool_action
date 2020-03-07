@@ -1,0 +1,29 @@
+# This workflow will install Fortran and GNU Autotools dependencies, and do compile test
+
+name: Fortran Program with GNU Autotools Simple Compiling Test
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        configure-parameters: ["","--host=i686-w64-mingw32"]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: |
+        cat /etc/apt/sources.list && cat /etc/apt/sources.list.d/* 1>&2
+        sudo apt-get update
+        sudo env ACCEPT_EULA=Y apt-get upgrade -y  # for freaking preinstalled M$ packages
+        sudo apt-get install autotools-dev gfortran gfortran-mingw-w64-i686 inkscape-open-symbols
+    - name: Fortran Compiling Test with GNU Autotools
+      run: |
+        ./autogen.sh
+        ./configure ${{ matrix.configure-parameters }}
+        make install clean
