@@ -2,6 +2,9 @@
 
 name: Fortran Program with GNU Autotools Simple Compiling Test
 description: Test build fortran programs with prepared GNU Autotools file
+branding:
+    icon: 'arrow-left-circle'
+    color: 'yellow'
 inputs:
     configure-parameters:
         description: 'parameters for running ./configure command'
