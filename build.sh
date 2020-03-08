@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 set -eux
 CONFIG_PARAMETERS=$*
 mkdir -p /builddir
